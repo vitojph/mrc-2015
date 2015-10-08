@@ -42,7 +42,7 @@ Una idea relacionada es la de **creencia**. "Pepito cree que *p*" está directam
 
 **Representación** es la relación que se establece entre dos dominios o ámbitos (un representante y una cosa representada) de manera que el primero *significa* o *toma el lugar* de la segunda. \marginnote{Pictogramas: peligro de cocodrilos, prohibido el baño}
 
-![Pictograms](img/pictogram.jpg) 
+![Pictograms](../img/pictogram.jpg) 
 
 El tipo de representante que más nos interesa en esta asignatura es el **símbolo**. El símbolo *7* significa *número 7*, y es equivalente en otros contextos a los símbolos *siete*, *seven*, *VII*, *qi*.  Estos símbolos son, habitualmente, más accesibles y fáciles de manejar que los objetos que representan. Por eso los manipulamos y realizamos operaciones de cálculo con ellos.
 
@@ -80,12 +80,14 @@ imprimeColor(Cosa) :- write("No lo sé :-/").
 Alternativa 2: 
 
 ```prolog
-imprimeColor(Cosa) :- color(Cosa, Color), !, write("Es "), write(Color), write(".").
+imprimeColor(Cosa) :- color(Cosa, Color), !, write("Es "), 
+                      write(Color), write(".").
 imprimeColor(Cosa) :- write("No lo sé :-/").
 
 color(nieve, blanco).
 color(cielo, amarillo).
-color(Cosa, Color) :- estaHechoDe(Cosa, Material), color(Material, Color).
+color(Cosa, Color) :- estaHechoDe(Cosa, Material), 
+                      color(Material, Color).
 
 estaHechoDe(hierba, vegetacion).
 color(vegetacion, verde).

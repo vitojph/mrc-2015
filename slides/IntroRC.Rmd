@@ -5,7 +5,7 @@ date: "8-9 de octubre de 2015"
 
 output:
   rmarkdown::tufte_handout:
-    highlight: zenburn
+    highlight: pygments
     keep_tex: false
 ---
 
@@ -61,7 +61,7 @@ Como analogía del razonamiento,\marginnote{Este ejemplo de razonamiento recibe 
 
 A menudo es útil describir el comportamiento de sistemas complejos utilizando metáforas como objetivos, intenciones, creencias, esperanzas. Es habitual describir un sistema de IA en términos intencionales porque es sencillo explicar el comportamiento a partir de los objetivos y creencias que maneja.\marginnote{El ejemplo típico es el del sistema capaz de jugar al ajedrez: el ordenador \textit{sabe} dónde están las piezas y \textit{quiere} ganar la partida accoralando al rey....} 
 
-Esta descripción basada en supuestas intenciones y objetivos se conoce como *actitud/postura intencional*. Y aunque este tipo de antopomorfización no siempre es adecuada a la hora de describir el funcionamiento de cualquier sistema, en IA se utiliza para justificar la construcción de **sistemas basado en el conocimiento** (*knowledge-based systems*) que manejan conjuntos de representaciones simbólicas llamadas **bases de conocimiento** (*knowledge bases*).
+Esta descripción basada en supuestas intenciones y objetivos se conoce como *actitud/postura intencional*. Y aunque este tipo de antropomorfización no siempre es adecuada a la hora de describir el funcionamiento de cualquier sistema, en IA se utiliza para justificar la construcción de **sistemas basado en el conocimiento** (*knowledge-based systems*) que manejan conjuntos de representaciones simbólicas llamadas **bases de conocimiento** (*knowledge bases*).
 
 
 # Sistemas basados en conocimiento
@@ -123,7 +123,8 @@ El uso de la lógica es relevante para representar conocimiento y llevar a cabo 
 
 
 
-[^krr-brachman]: Brachman, R.; Levesque, H. *Knowledge Representation and Reasoning*. Morgan Kaufmann. 2004. http://rair.cogsci.rpi.edu/pai/library/brachmanbook7-17-03.pdf
+[^krr-brachman]: Brachman, R.; Levesque, H. *Knowledge Representation and Reasoning*. Morgan Kaufmann. 2004. http://www.cin.ufpe.br/~mtcfa/files/in1122/Knowledge%20Representation%20and%20Reasoning.pdf
+
 
 [^krr-slides]: http://www.cs.toronto.edu/~hector/PublicKRSlides.pdf
 

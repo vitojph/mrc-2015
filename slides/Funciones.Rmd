@@ -1,0 +1,345 @@
+---
+title: "Funciones | MRC"
+author: "Víctor Peinado (v.peinado@filol.ucm.es)"
+date: "29-30 de octubre de 2015"
+
+output:
+  rmarkdown::tufte_handout:
+    highlight: pygments
+    keep_tex: false
+---
+
+# Referencias
+
+- (Partee, *et al.*, 1990, chap. 2) [^partee]
+
+- Wikipedia: Producto cartesiano [^prodcartesiano]
+
+- Wikipedia: Relación matemática [^relbin]
+
+- Wikipedia: Función matemática [^funcmat]
+
+
+# Funciones
+
+Una **función** es un tipo especial de relación que cumple las siguientes dos condiciones:\marginnote{La siguiente relación es una función. \includegraphics[]{../img/function.png} Ésta, en cambio, no lo es. \includegraphics[]{../img/relation.png}}
+
+1. todos y cada uno de los elementos del dominio tienen correspondencia en el rango.
+
+2. cada elemento del dominio se corresponde con uno solo de los elemento del rango.
+
+Una **función** es un subconjunto del producto cartesiano $X \times Y$ si en la que todos y cada uno de los miembros de $X$ aparecen una sola vez como primer coordenada del conjunto de pares ordenados.
+
+
+## Ejemplos de funciones
+
+Sean los conjuntos $A = \{a, c, b\}$ y $B = \{1, 2, 3, 4\}$. Las siguientes relaciones sí son funciones:
+
+$$
+P = \{(a, 1), (b, 2), (c, 3)\}
+$$ 
+
+$$
+Q = \{(a, 4), (b, 4), (c, 4)\}
+$$ 
+
+$$
+R = \{(a, 3), (b, 1), (c, 2)\}
+$$ 
+
+
+Por el contrario, las siguientes relaciones no son funciones. ¿Sabrías decir por qué?
+
+$$
+S= \{(a, 1), (b, 2)\}
+$$ 
+        
+$$
+T = \{(a, 2), (b, 1), (c, 3), (c, 4)\}
+$$ 
+        
+$$
+V = \{(a, 1), (a, 2), (b, 3)\}
+$$ 
+
+## Terminología 
+
+Como\marginnote{\includegraphics[]{../img/function-machine.png}} las funciones son un tipo especial de relaciones, mucha de la terminología es común. Una función que es un subconjunto de $A \times B$ es una función *desde $A$ hasta $B$*. Una función que sea subconjunto de $A \times A$ es una *función en $A$*.
+
+Utilizamos la notación $F: A \rightarrow B$ para indicar *$F$ es una función de $A$ a $B$*.
+
+Fuera de las matemáticas, es habitual también utilizar las palabras *transformación*, *mapeo* y *correspondencia* como sinónimos de **función**. De hecho, en programación se suelen simbolizar las funciones con la metáfora de una máquina o *caja negra* que transforma argumentos de entrada en valores de salida.
+
+Cuando hablamos de funciones fuera del campo de las matemáticas, los elementos del dominio se suelen denominar **argumentos** y su correspondencia en el rango **valores**.
+
+De los ejemplos de la página anterior, podemos decir que la función $P$ asigna el valor $3$ al argumento $c$.
+Denotamos este hecho con la expresión $P(c) = 3$.
+
+# Tipos de funciones
+
+## Funciones suprayectivas (*onto*) y no suprayectivas (*into*)
+\marginnote{suprayectiva (\textit{onto}) \includegraphics[]{../img/suprayectiva.png}}
+
+A veces resulta interesante distinguir si el rango de una función $F$ de $X$ a $Y$ es igual a $Y$ o no. Decimos que una función es **suprayectiva** (o sobreyectiva, epiyectiva, exhaustiva\ldots) cuando todos los elementos del rango (el conjunto $Y$) están asignados a algún miembro del dominio (el conjunto $X$).
+
+Por el contrario, decimos que una función es **no suprayectiva** cuando existe algún elementos del rango (el conjunto $Y$) que no está asignado a alguno de los miembros del dominio (el conjunto $X$).
+
+
+## Funciones inyectivas (*one-to-one*)
+\marginnote{inyectiva (\textit{one-to-one}) \includegraphics[]{../img/inyectiva.png}}
+    
+Una función $F:X \rightarrow Y$ es una **inyectiva** (*one-to-one*) cuando no hay ningún miembro de $Y$ asignado a más de un miembro de $X$.
+
+Por ejemplo, la función $F(x) = x+1$ es inyectiva ya que no existe ningún valor que pueda asignarse a más de una $x$.
+
+Sin embargo, $G(x) = x^2$ no lo es, ya que p. ej., el valor $4$ puede asignarse a $G(2)$ y a $G(-2)$.  
+
+
+## Funciones no inyectivas (*many-to-one*)
+\marginnote{no inyectiva (\textit{many-to-one} \includegraphics[]{../img/noinyectiva.png} biyectiva \includegraphics[]{../img/bijection.png} \includegraphics[]{../img/function-machine-composition.png}}
+    
+Por el contrario, decimos que una función $F:X \rightarrow Y$ es **no inyectiva** cuando existe algún miembro de $Y$ que está asignado a más de un miembro de $X$.
+
+El diagrama muestra una función entre un conjunto de polígonos y números enteros, de manera que a cada polígono le corresponde el número de lados que tiene. Alguno de los enteros está emparejado con más de un polígono distinto.
+
+
+## Funciones biyectivas (suprayectivas + inyectivas)
+
+Una función $F:X \rightarrow Y$ que sea a la vez suprayectiva e inyectiva se denomina **función biyectiva**.
+    
+Este tipo de funciones son de especial interés, ya que sus inversas son también funciones. En este caso, $F:Y \rightarrow X$ es también una función biyectiva.
+
+
+
+
+
+
+## Función compuesta
+
+Dadas dos funciones, $f: X \rightarrow Y$ y $g:Y \rightarrow Z$, podemos formar una nueva función de $X$ a $Z$, llamada **función compuesta** o **composición** de $f$ y $g$ y escrita $g \circ f$.
+
+La función compuesta se puede definir como:
+
+$g \circ f = _{def} \{(x, z) |$ para algún $y, (x, y) \in f$ y $(y, z) \in g\}$
+
+
+![](../img/composition.png)
+
+En el ejemplo del diagrama, $(g \circ f)(c) = g(f(c)) = \#$. 
+
+Volviendo a la metáfora de la máquina o la caja negra, podemos representar la función tal y como se muestra a la derecha.
+
+
+## Función identidad
+
+Una función del tipo $F:A \rightarrow A$ definida como $F = \{(x, x) | x \in A\}$ se denomina **función identidad**, escrita como $id_A$. Esta función simplemente mapea todo elemento de $A$ consigo mismo. La función composición entre cualquier función y la función identidad da como resultado la propia función identidad:
+
+\marginnote{función no inyectiva y no suprayectiva \includegraphics[]{../img/noinyectiva-nosuprayectiva.png}
+función inyectiva y no suprayectiva \includegraphics[]{../img/inyectiva-nosuprayectiva.png} 
+función no inyectiva y suprayectiva \includegraphics[]{../img/noinyectiva-suprayectiva.png} 
+función biyectiva \includegraphics[]{../img/biyectiva.png}
+}
+
+
+$$
+id_A \circ F = F \circ id_A = F
+$$
+
+Para cualquier función $F: A \rightarrow B$ que sea biyectiva, se cumplen las siguientes afirmaciones:
+
+1. La función compuesta de $F$ con su inversa es igual a la función identidad de $A$: $(F^{-1} \circ F) = id_A$
+
+2. La función compuesta de la inversa de $F$ con $F$ es igual a la función identidad de $B$: $(F \circ F^{-1})  = id_B$
+    
+
+## Composición de relaciones
+
+La definición de composición no se limita únicamente a funciones, sino que se puede generalizar y extender a las relaciones. Dadas las relaciones $R \subseteq A x B$ y $S \subseteq B x C$, la relación compuesta de $R$ y $S$, escrita $S \circ R$ se puede definir como:
+
+$S \circ R = _{def} \{(x, z) |$ para algún $y, (x, y) \in R$ y $(y, z) \in S\}$
+
+
+Para cualquier relacion $R \subseteq A x B$
+        
+- La relación compuesta de $R$ con la función/relación identidad de $B$ es igual a $R$: $id_B \circ R = R$
+
+- La relación compuesta de la función/relación identidad de $A$ con $R$ es igual a $R$: $R \circ id_A = R$
+        
+Para cualquier relacion de tipo *uno-a-uno* $R: A \rightarrow B$
+        
+- La relación compuesta de $R$ con su inversa es un subconjunto de la relación identidad de $A$: $R^{-1} \circ R \subseteq id_A$
+        
+- La relación compuesta de la inversa de $R$ con $R$ es un subconjunto de la relación identidad de $B$: $R \circ R^{-1} \subseteq id_B$
+        
+    
+
+# Propiedades de las relaciones
+
+Si analizando más detenidamente las relaciones binarias ---pares ordenados que relacionan un elemento de un primer conjunto con otro elemento de un segundo conjunto--- que hemos visto hasta ahora, podemos identificar distintas propiedades, según los pares ordenados que formen parte de dicha relación, a saber: 
+        
+- reflexividad
+- simetría
+- transitividad
+- conexión
+    
+
+Todas estas propiedades se aplican a relaciones en un conjunto, como en $A x A$, nunca en relaciones desde $A$ hasta $B$ donde $B \not= A$.
+
+
+## Reflexividad
+
+Sea $A$ un conjunto y $R$ una relacion en $A$, decimos que $R$ es **reflexiva** si y solo si $R$ contiene pares ordenados de la forma $(x, x)$ para todos los $x$ elementos de $A$.
+
+P. ej., sea $A = \{1, 2, 3\}$: 
+        
+La relación $R_1 = \{(1, 1), (2, 2), (3, 3), (3, 1)\}$ en $A$ es reflexiva porque contiene los pares ordenados $(1, 1), (2, 2), (3, 3)$ para todos los miembros de $A$\marginnote{Es irrelevante que tenga otros pares con la forma $(x, y)$.}
+
+Otra forma de definir reflexividad es diciendo que $R$ es reflexiva en $A$ si y solo la relación identidad de $A$ es un subconjunto de $R$: $id_A \subseteq R$.
+
+La relación *celebra el cumpleaños el mismo día* es reflexiva para el conjunto $H$ de los seres humanos.
+
+Por otro lado, una relación que no cumpla la condición para ser reflexiva se llama **no reflexiva**. Por ejemplo, la relación $R_2 = \{(1, 1), (2, 2)\}$ en $A$ es **no reflexiva** porque no contiene el par ordenado de la forma $(x, x)$ para uno de los elementos de $A$, concretamente $3$.
+    
+Cuando una relación no contienen ningún par de la forma $(x, x)$ se denomina **relación irreflexiva**. La relación $R_3 = \{(2, 1), (2, 3)\}$ es irreflexiva en $A$.
+
+Nótese que la irreflexividad es una condición más fuerte que la no reflexividad: irreflexiva implica no reflexiva, pero al revés no existe tal implicación. Dicho de otro modo, una relación $R$ en $A$ es no reflexiva si y solo si $id_A \not\subseteq R$, pero es irreflexiva si y solo si $R \cap id_A = \varnothing$
+
+La\marginnote{Hay gente que mantiene económicamente a sí misma y a otras personas. Hay gente que no es económicamente independiente.} relación *es más alto que* es irreflexiva (y, por lo tanto, no reflexiva) en el conjunto $H$ de los seres humanos. La relación *mantiene económicamente a* es no reflexiva, pero no irreflexiva.
+
+## Simetría
+
+Sea\marginnote{Esta definición no requiere que $R$ contenga todos los pares ordenados incluidos en $A \times A$. Una relación puede ser simétrica aunque no contenga pares de la forma $(x, y)$ para algunas $x$ y algunas $y$: $R \subset A \times A$} $A$ un conjunto y $R$ una relacion binaria en $A$, decimos que $R$ es **simétrica** si y solo si para cada par ordenado de la forma $(x, y)$ en $R$ existe también otro par de la forma $(y, x)$ que también es elemento de $R$.
+
+P. ej., sea $A = \{1, 2, 3\}$, las siguientes relaciones son simétricas:
+
+$\{(1, 2), (2, 1), (2, 3), (3, 2)\}$
+
+$\{(1, 3), (3, 1)\}$
+        
+$\{(1, 1)\}$
+
+La relación *es primo de* es una relación simétrica en el conjunto $H$ de los seres humanos.
+
+Cuando no se cumple la condición de simetría, es decir, si existe en $R$ algún par ordenado del tipo $(x, y)$ y no existe el par $(y, x)$ la relación se denomina  **no simétrica**
+        
+P. ej., sea $A = \{1, 2, 3\}$, las siguientes relaciones son no simétricas:
+
+$\{(1, 2), (2, 3)\}$
+
+$\{(1, 2), (2, 1), (2, 2), (3, 3), (2, 3)\}$
+
+La relación *es hermana de* es no simétrica en el conjunto $H$ de los seres humanos, aunque sí es simétrica en el subconjunto de las mujeres.
+
+Por último, si se da el caso en que la relación $R$ no contiene ningún par $(y, x)$ para ningún par de la forma $(x, y)$, entonces $R$ se denomina **relación asimétrica**.
+
+P. ej., las siguientes relaciones son asimétricas: $\{(1, 2), (2, 3)\}, \{(2, 3)\}$
+
+
+Una relación $R$ se denomina **antisimétrica** cuando se da que, si dos elementos $x$ e $y$ se relacionan entre sí, entonces estos elementos son iguales: si existen pares con la forma $(x, y)$ e $(y, x)$ esto implica que $x = y$. 
+
+No es necesario que $(x, x) \in R$ para todo $x \in A$. O dicho de otro modo: la relación no necesita ser reflexiva para ser antisimétrica.
+
+La\marginnote{Antisimétrica no es opuesto a simétrica. De hecho, existen relaciones que son simétricas y antisimétricas al mismo tiempo, como la igualdad matemática.} relación *ser más alto que* es antisimétrica dado que el hecho de que $x$ sea más alto que $y$ y que $y$ sea al mismo tiempo más alto que $x$ es imposible.
+
+
+## Transitividad
+
+Una relación $R$ se denomina  **transitiva** si y solo si para todos los pares ordenados con la forma $(x, y)$ e $(y, z)$ en $R$, existe un tercer par en $R$ con la forma $(x, z)$. P. ej., la relación $R = \{(1, 2), (2, 3), (1, 3)\}$ es transitiva. 
+
+No es necesario que $x$, $y$ y $z$ sean elementos distintos. La siguiente relación también es transitiva: $\{(2, 2)\}$, donde $x = y = z = 2$.
+
+La relación *es ancestro de* es transitiva en el conjunto $H$ de los seres humanos.
+
+Cuando una relación no cumple la definición de transitividad se denomina **no transitiva**. P. ej., la relación $\{(2, 2), (2, 3), (3, 2)\}$ es no transitiva.
+        
+Por el contrario, la relación $\{(2, 2), (2, 3), (3, 2), (3, 3)\}$ sí lo es. 
+
+Si para ningún par de pares con la forma $(x, y)$ y $(y, z)$ que sean elementos de $R$ existe el par ordenado $(x, z)$ entonces la relación se denomina **intransitiva**. Si una relación es intransitiva es también no transitiva, pero no al revés. P. ej., las siguientes relaciones son intransitivas:
+
+$\{(1, 2), (2, 3)\}$
+
+$\{(3, 1), (1, 2), (2, 3)\}$
+
+$\{(3, 2), (1, 3)\}$
+    
+La relación *es madre de* es intransitiva en el conjunto de $H$ los seres humanos.
+
+    
+## Conexión
+
+Una relación $R$ se denomina **conexa** si y solo si para cada dos elementos distintos $x$ e $y$ que son elementos de  $A$, o bien existe un par $(x, y)$ en $R$, o bien existe un par $(y, x)$ en $R$, o bien existen ambos.
+
+La definición de relación conexa ---igual que la de relación reflexiva--- se refiere a todos los miembros del conjunto $A$. Es más, los pares $(x, y)$ tienen que ser necesariamente elementos distintos. El hecho de que existan pares con la forma $(x, x)$ es irrelevante para que la relación sea considerada conexa o no.
+
+Sea $A = \{1, 2, 3\}$, las siguientes relaciones son conexas:
+    
+$\{(1, 2), (3, 1), (3, 2)\}$
+
+$\{(1, 1), (2, 3), (1, 2), (3, 1), (2, 2)\}$
+    
+Sin embargo, las siguientes relaciones en $A$ no son conexas:\marginnote{En la primera, falta alguno de los pares $(1, 3)$ o $(3, 1)$. En la segunda, $(1, 2)$ o $(2, 1)$.}
+     
+$\{(1, 2), (2, 3)\}$
+
+$\{(1, 3), (3, 1), (2, 2), (3, 2)\}$
+    
+
+
+# Ejemplos de relaciones y sus propiedades
+
+La relación *es padre de* en el conjunto $H$ formado por todos los seres humanos es:
+
+- irreflexiva: nadie es su propio padre.
+- asimétrica: si $x$ es el padre de $y$, $y$ no puede ser el padre de $x$.
+- intransitiva: si $x$ es el padre de $y$, e $y$ es el padre de $z$, $x$ es el abuelo de $z$, pero no puede ser su padre.
+- no conexa: existen en $H$ individuos $x$ e $y$ que no están relacionados porque ninguno es padre del otro.
+
+
+La relación *mayor que* en el conjunto $Z$ formado por los enteros positivos $\{1, 2, 3, 4,\ldots\}$ es:
+
+- irreflexiva: ningún número es mayor que sí mismo.
+- asimétrica: si $x > y$, entonces $y \not) x$.
+- transitiva: si $x > y$ e $y > z$, entonces $x ) z$.
+- conexa: para cualquier par de enteros distintos, o bien $x > y$ o bien $y > x$.
+        
+        
+La relación *tiene la misma edad que* en el conjunto $H$ formado por todos los seres humanos es:
+
+- reflexiva: todo el mundo tiene la misma edad que sí mismo.
+- simétrica: si $x$ tiene la misma edad que $y$, entonces $y$ tiene la misma edad que $x$.
+- transitiva: si $x$ e $y$ tienen la misma edad, e $y$ tiene la misma edad que $z$, entonces $x$ tiene la misma edad que $z$.
+- no conexa: para en $H$ individuos $x$ e $y$ que no están relacionados porque no tienen la misma edad.
+        
+
+# Diagramas de relaciones
+
+A menudo es más sencillo asimilar las nociones de reflexividad, simetría y transitividad cuando las representamos como diagramas.\marginnote{$R = \{(a, a), (b, b), (c, c), (d, d), (a, b), (b, c), (d, b)\}$ \includegraphics[]{../img/diagrama-relacion.png} } 
+
+Como en los diagramas de Venn, los miembros del conjunto se representan como puntos etiquetados. Si el elemento $a$ está relacionado con el elemento $b$, dibujamos una flecha que conecta los puntos correspondientes.
+
+Queda claro en este diagrama que $R$ es una relación reflexiva en $A$, dado que todo elemento del conjunto $A$ se relaciona consigo mismo.
+
+Este\marginnote{\includegraphics[]{../img/diagrama-relacion-cartesiano-reflexiva.png}} diagrama también puede representarse en coordenadas cartesianas, como se muestra a la derecha:
+
+- En el eje horizontal (ordenadas) representamos el conjunto inicial, de izquiera a derecha.
+- En el eje vertical (abscisas) representamos el conjunto final, de abajo a arriba.
+- Si un determinado par pertenece a la relación se coloca una cruz en la casilla correspondiente; si no, se deja en blanco.
+
+La diagonal principal del cuadro, marcada en verde, corresponde a los pares ordenados en los que sus dos elementos son iguales. Si todas las casillas de esta diagonal tienen aspas, como en el ejemplo, la relación es reflexiva.
+
+
+
+# Ejercicios
+
+Ejercicios 1-4 de (Partee, *et al.*, 1990, chap. 2) y ejercicios 1, 3, 5 de (Partee, *et al.*, 1990, chap. 3).
+.
+
+
+[^partee]: Partee, B.; ter Meulen, A.; Wall, R. *Mathematical Methods in Linguistics* Studies in Linguistics and Philosophy. Springer. 1990. http://books.google.es/books?id=qV7TUuaYcUIC 
+
+[^prodcartesiano]: Producto cartesiano http://es.wikipedia.org/wiki/Producto_cartesiano
+
+[^relbin]: Relación matemática http://es.wikipedia.org/wiki/Relaci\%C3\%B3n_matem\%C3\%A1tica
+
+[^funcmat]: Función matemática http://es.wikipedia.org/wiki/Funci\%C3\%B3n_matem\%C3\%A1tica
+

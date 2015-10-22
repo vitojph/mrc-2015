@@ -1,0 +1,140 @@
+---
+title: "Relaciones | MRC"
+author: "Víctor Peinado (v.peinado@filol.ucm.es)"
+date: "30 de octubre - 5 de noviembre de 2015"
+
+output:
+  rmarkdown::tufte_handout:
+    highlight: pygments
+    keep_tex: false
+---
+
+# Referencias
+
+- (Partee, *et al.*, 1990, chap. 2) [^partee]
+
+- Wikipedia: Producto cartesiano [^prodcartesiano]
+
+- Wikipedia: Relación matemática [^relbin]
+
+
+
+# Pares ordenados
+
+En los cojuntos que hemos visto hasta ahora no existe ningún tipo de orden entre sus miembros. Sin embargo, podemos utilizar conjuntos ordinarios para definir un **par ordenado**. 
+
+Los pares ordenados se escriben $(a, b)$ y en ellos el elemento $a$ se considera el primero y $b$ se considera el segundo. Los pares ordenados se definen del siguiente modo: 
+
+$$
+(a,b) = _{def}\{\{a\}, \{a,b\}\}
+$$
+
+El primer elemento del par $(a, b)$ es el único elemento del conjunto unitario $\{a\}$, mientras que el segundo elemento del par es el elemento del conjunto $\{a, b\}$ que no es miembro de $\{a\}$.
+
+
+## Pares ordenados y n-tuplas
+
+Estos pares son ordenados, lo que implica que, en general, $(a,b) \not= (b,a)$.\marginnote{¿Por qué digo \textit{en general}? Porque $\{\{a\}, \{a,b\}\} = \{\{b\}, \{b,a\}\}$ si y solo si $a = b$.} 
+
+La definición de pares ordenados se puede extender para definir tripletas ordenadas o cualquier tupla de longitud $n$.
+
+$$
+(a, b, c) = _{def}((a,b),c)
+$$
+
+De un modo similar, podemos generalizar y definir la tripleta $(a,b,c)$ como:
+
+$$
+(a,b,c) =  _{def}\{<a, b> |\,\, a \in A, b \in B\}
+$$
+
+
+# Producto cartesiano
+
+Si tenemos dos conjuntos $A$ y $B$, podemos formar pares ordenados tomando un elemento de $A$ como primer miembro del par y un elemento de $B$ como segundo miembro. El **producto cartesiano** de $A$ y $B$, escrito $A \times B$ es el conjunto formado por todos estos pares. La definición de producto cartesiano es:
+
+$$
+A \times B = _{def}\{(a,b) | a \in A, b \in B\}
+$$
+
+Veamos\marginnote{El número total de pares ordenados que tiene un producto cartesiano se calcula multiplicando las cardinalidades de los conjuntos. En este caso $|K|=3$ y $|L|=2$, $3 \times 2=6$ pares ordenados.} algunos ejemplos. Sean $K = \{a, b, c\}$ y $L = \{1, 2\}$:
+
+$$
+K \times L =  \{(a, 1), (a, 2), (b, 1), (b, 2), (c, 1), (c, 2)\}
+$$
+
+$$
+L \times K =  \{(1, a), (1, b), (1, c), (2, a), (2, b), (2, c)\}
+$$
+
+$$
+L \times L =  \{(1, 1), (1, 2), (2, 1), (2, 2)\}
+$$
+
+Por\marginnote{$K \times \varnothing =  \varnothing$} definición, el producto cartesiano de cualquier conjunto con el conjunto vacío es el conjunto vacío.
+
+
+# Relaciones
+
+Tenemos una idea intuitiva de la definición de **relación** como la clase de conexión que se establece (o que no se establece) entre objetos. Por ejemplo, la relación *progenitor* se establece entre una madre o un padre y cualquiera de sus hijos, pero no entre un hijo y otro.
+
+Los verbos transitivos son un ejemplo claro que encontramos en las lenguas naturales de conexiones entre diferentes entidades que pueden equipararse a relaciones. Cuando usamos el verbo *comer* de manera transitiva, podemos entender un tipo de relación que se establece entre pares de objetos, la primera realiza la acción y la segunda es comida: *Juan come manzanas*.
+
+Desde el punto de vista matemático, vamos a definir relación como una operación realizada sobre conjuntos que nos permite vincular un elemento de un conjunto con otro elemento del mismo conjunto o de uno diferente. Y escribimos $Rab$ o $aRb$ para denotar la relación $R$ que se establece entre los elementos $a$ y $b$. 
+
+También podemos escribir $R \subseteq A \times B$\marginnote{¡Ojo! Una relación $R$ desde $A$ hasta $B$ puede entenderse como un subconjunto del producto cartesiano $A \times B$.} para denotar una relación que se establece entre los elementos del conjunto $A$ y el conjunto $B$, o mejor, una relación desde $A$ a $B$.
+
+En toda relación $R: A \rightarrow B$, los conjuntos $A$ y $B$ involucrados reciben nombres especiales. Llamamos **dominio** a los elementos de $A$, y **rango** a los elementos de $B$.
+
+La relación $R$ entre los conjuntos $X$ y $Y$ se denota como $R: X \rightarrow Y$ y puede representarese gráficamente a través de diagramas de Venn y flechas.
+
+![relación](../img/relation.png)
+
+El dominio se corresponde con el conjunto $X = \{1, 2, 3, 4\}$ y el rango como el conjunto $Y = \{A, B, C, D\}$. Las flechas representan la relación $R = \{(1, D), (2, B), (2, C)\}$.\marginnote{En una relación, podemos encontrar un elemento del dominio con más de un elemento del rango.}
+
+A continuación, imaginemos una relación a la que podamos dar una semántica fácil de interpretar. Imaginemos un conjuto $H$ que contiene a todos los habitantes del planeta. Pensemos en una relación cuya semántica podemos verbalizar en lenguaje natural como *es madre de*. Pues bien, podemos definir una relación sobre el conjunto de los seres humanos $R: H \rightarrow H$ como un conjunto de pares ordenados sobre los elementos de $H$, de manera que el primer elemento de cada par sea una madre, y el segundo elemento del par sea un padre. 
+
+Recuerda que esta relación es un subconjunto extricto del producto cartesiano $R \subset H \times H$. Todo el mundo tiene madre, por lo tanto todos los miembros del rango apareceran representados como segundos miembros del par. Pero no todos los miembros de $H$ son madres. Mi madre tiene una única madre pero tres hijos, por lo tanto:
+
+- aparecerá como segundo elemento de un par: (mi abuela, mi madre); y
+
+- aparecerá como primer elemento en tres pares distintos: (mi madre, mi hermana), (mi madre, mi hermano), (mi madre, yo)
+
+
+## Complemento de una relación
+
+El **complemento de una relación** $R \subseteq A x B$, escrito $R'$, está formado por todos los pares ordenados del producto cartesiano $A \times B$ que no están incluídos en la relación $R$. Formalmente, se define como:
+
+$$
+R' = _{def}(A \times B) - R
+$$
+
+Por\marginnote{Por cierto, como hemos visto con otros conjuntos, $(R')' = R$.} lo tanto, el complemento de $R$ contienen todos los pares ordenados del producto cartesiano que no son miembros de $R$.
+
+
+## Inverso de una relación
+
+El **inverso de una relación** $R \subseteq A x B$, escrito $R^{-1}$, está formado por todos los pares ordenados que son elementos de $R$, pero con el orden de los elementos invertido.
+
+Sea $A = \{1, 2, 3\}$ y sea $R$ la relación *es mayor que* tal que $R \subseteq A x A = \{(3, 2), (3, 1), (2, 1)\}$.
+
+El inverso de $R$, $R^{-1} = \{(2, 3), (1, 3), (1, 2)\}$. Podemos expresar en lenguaje natural el significado de esta nueva relación como *es menor que*.
+
+El complemento de $R$, $R' = \{(1, 1), (1, 2), (1, 3), (2, 2), (2, 3), (3, 3)\}$, y podemos expresar en lenguaje natural el significado como *es menor o igual que*.
+
+Si $R \subseteq A x B$, entonces $R^{-1} \subseteq B x A$, pero $R' \subseteq A x B$.
+
+
+# Ejercicios
+
+Ejercicio 1 de (Partee, *et al.*, 1990, chap. 2).
+
+
+
+[^partee]: Partee, B.; ter Meulen, A.; Wall, R. *Mathematical Methods in Linguistics* Studies in Linguistics and Philosophy. Springer. 1990. http://books.google.es/books?id=qV7TUuaYcUIC 
+
+[^prodcartesiano]: Producto cartesiano http://es.wikipedia.org/wiki/Producto_cartesiano
+
+[^relbin]: Relación matemática http://es.wikipedia.org/wiki/Relaci\%C3\%B3n_matem\%C3\%A1tica
+
+[^funcmat]: Función matemática http://es.wikipedia.org/wiki/Funci\%C3\%B3n_matem\%C3\%A1tica

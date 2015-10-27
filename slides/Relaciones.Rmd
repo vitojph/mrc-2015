@@ -1,7 +1,7 @@
 ---
 title: "Relaciones | MRC"
 author: "Víctor Peinado (v.peinado@filol.ucm.es)"
-date: "30 de octubre - 5 de noviembre de 2015"
+date: "29-30 de octubre de 2015"
 
 output:
   rmarkdown::tufte_handout:
@@ -21,7 +21,7 @@ output:
 
 # Pares ordenados
 
-En los cojuntos que hemos visto hasta ahora no existe ningún tipo de orden entre sus miembros. Sin embargo, podemos utilizar conjuntos ordinarios para definir un **par ordenado**. 
+En los conjuntos que hemos visto hasta ahora no existe ningún tipo de orden entre sus miembros. Sin embargo, podemos utilizar conjuntos ordinarios para definir un **par ordenado**. 
 
 Los pares ordenados se escriben $(a, b)$ y en ellos el elemento $a$ se considera el primero y $b$ se considera el segundo. Los pares ordenados se definen del siguiente modo: 
 

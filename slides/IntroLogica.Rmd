@@ -1,0 +1,78 @@
+---
+title: "Lógica y sistemas formales | MRC"
+author: "Víctor Peinado <v.peinado@filol.ucm.es>"
+date: "19 de noviembre de 2015"
+
+output:
+  rmarkdown::tufte_handout:
+    highlight: pygments
+    keep_tex: false
+---
+
+# Referencias
+
+- (Partee, *et al.*, 1990, chap. 5) [^partee]
+- (Brachman & Levesque, 2004, chap. 1) [^krr-brachman]
+- (van Harmelen, Lifschitz, Porter, 2008, chap. 1) [^krh]
+
+
+# Lenguajes naturales vs lenguajes formales
+
+Las\marginnote{Las lenguas son estupendas, pero también muy ambiguas.} lenguas que habitualmente utilizamos de manera natural para comunicar y para interacionar unos con otros ---turco, quechua, mandarín, lengua de señas, bable---se denominan **lenguajes naturales**. Estos lenguajes naturales se adquieren como lengua materna cuando somos niños y están perfectamente adaptados a cualquier situación comunicativa que podamos imaginar.
+
+Los **lenguajes formales**, por otro lado, se diseñan *ad hoc* con un objetivo concreto y delimitado en mente. Aunque son artificiales, pueden evolucionar y cambiar con el paso del tiempo. Ejemplos de lenguajes formales hay muchos: el lenguaje de teoría de conjuntos que hemos estado utilizando, el lenguaje de la aritmética, lenguajes de programación como Prolog y Python e incluso algunos sistemas de representación con significado convencional como la notación musical, el código Morse, las luces de los semáforos...
+
+En cuanto lingüistas, nos interesan los lenguajes formales porque son muy adecuados para representar el significado de los lenguajes naturales. Y el significado es uno de los objetos de estudio de la gramática. Más concretamente es la Semántica, como disciplina científica, la que selecciona determinados aspectos y partes del significado como objeto de estudio y emplea lenguajes formales como herramientas de análisis.
+
+La Lógica es una rama fundamental de las Matemáticas que proporciona distintos lenguajes formales\marginnote{los dos sistemas más conocidos son la lógica proposicional y la lógica de predicaso}, como veremos más adelante. 
+
+
+# Sintaxis y semántica en sistemas formales
+
+La distinción entre la sintaxis y la semántica de un lenguaje o sistema formal nos permite estudiar, por un lado, las propiedades de las expresiones del propio sistema y, por otro, las relaciones entre el sistema y sus modelos o interpretaciones. Todo sistema formal mantiene esta división y contiene:
+
+- Una **parte sintáctica**, formada por:
+
+    1. un conjunto de **símbolos primitivos**
+
+    2. un conjunto de reglas de formación (**gramática**) que establece cómo construir **fórmulas bien formadas** a partir de los símbolos primitivos.
+
+    3. un conjunto de **axiomas**. Cada axioma debe ser una fórmula bien formada.
+
+    4. un conjunto de reglas de inferencia (**sistema deductivo**) 
+
+- Una **parte semántica**, formada por:
+
+    5. una interpretación formal que asigne significados inequívocos a los símbolos y valores de verdad a las fórmulas.
+
+
+La distinción entre forma y contenido parece intuitiva y se ha menajado desde la antigüedad, sin embargo, a veces es difícil poner los límites: algunas propiedades de las lenguas tienen reflejo en su sintaxis y su semántica.
+
+
+# Lógica proposicional vs Lógica de Predicados
+
+La lógica proposicional (cálculo proposicional) y la lógica de predicados (o lógica de primer orden) son los dos sistemas formales lógicos más conocidos y utilizados.
+
+Cada uno de ellos tiene su propio vocabulario, sus reglas sintácticas y su semántica. La sintaxis y la semántica de estos lenguajes formales son muy simples. Y es precisamente ahí donde reside su gran virtud. Se han diseñado a propósito para evitar la ambigüedad y la complejidad que encontramos habitualmente en las lenguas naturales.
+
+Como veremos, en estos lenguajes todas las oraciones son declarativas: no hay ejemplos de oraciones interrogativas, imperativas o performativas. Vamos a poder manejar un conjunto limitado de conectivas, equivalentes a conjunciones del español como *y*, *o*, *no*, *si... entonces*, *si y solo si*. Y en lógica de predicados, manejaremos incluso algunos determinantes equivalentes a las palaras españolas *algún*, *todos*, etc. 
+
+La lógica es la disciplina que estudia el razonamiento (como producto, no como proceso), lo que conlleva identificar ejemplos de razonamiento correctos (válidos) y distintinguirlos de los incorrectos (o inválidos).
+
+A partir de las premisas *Todos los hombres son mortales* y *Sócrates es un hombre* podemos ver que el razonamiento que concluye *Por lo tanto, Sócrates es mortal* es válido. La conclusión es consecuencia lógica de las premisas. Si las premisas son correctas, no podemos negar la veracidad de la conclusión.
+
+Sin embargo, de las premisas *Todos los gatos son mamíferos* y *Todos los perros son mamíferos* no podemos concluir que *Por lo tanto, todos los gatos son perros*. El razonamiento no es válido.
+
+Por último, fijémonos en otro ejemplo. De manera paralela al ejemplo de Sócrates, a partir de las premisas *Todos los conejos son roedores* y *Peter es un conejo* vemos que el razonamiento que concluye *Por lo tanto, Peter es un roedor* es válido también. La validez del razonamiento no depende del significado de palabras como *hombre*, *mortal*, *conejo* y *roedor*, sino más bien de la forma del argumento.
+
+
+
+
+[^partee]: Partee, B.; ter Meulen, A.; Wall, R. *Mathematical Methods in Linguistics* Studies in Linguistics and Philosophy. Springer. 1990. http://books.google.es/books?id=qV7TUuaYcUIC 
+
+[^krr-brachman]: Brachman, R.; Levesque, H. *Knowledge Representation and Reasoning*. Morgan Kaufmann. 2004. http://rair.cogsci.rpi.edu/pai/library/brachmanbook7-17-03.pdf
+
+[^krr-slides]: http://www.cs.toronto.edu/~hector/PublicKRSlides.pdf
+
+[^krh]: van Harmelen, Lifschitz, V. Porter, B. (Eds.) *Handbook of Knowledge Representation*. Elsevier Science. 2008. http://dai.fmph.uniba.sk/~sefranek/kri/handbook/
+

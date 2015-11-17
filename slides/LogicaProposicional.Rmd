@@ -1,0 +1,310 @@
+---
+title: "Lógica Proposicional | MRC"
+author: "Víctor Peinado <v.peinado@filol.ucm.es>"
+date: "20-27 de noviembre de 2015"
+
+output:
+  rmarkdown::tufte_handout:
+    highlight: pygments
+    keep_tex: false
+---
+
+# Referencias
+
+- (Partee, *et al.*, 1990, chap. 6) [^partee]
+- Wikipedia: Lógica Proposicional [^wiki]
+
+
+La **lógica proposicional** o lógica de orden cero es un sistema formal cuyos elementos más simples representan proposiciones, y cuyas constantes lógicas, llamadas conectivas, representan operaciones sobre proposiciones, capaces de formar otras proposiciones de mayor complejidad
+
+
+# Sintaxis
+
+La sintaxis de la Lógica proposicional es muy simple. Asumimos un conjunto infinito de vocabulario básico formado por proposiciones atómicas que representamos con los símbolos $p, q, r, s$,.\marginnote{Y utilizamos subíndices $p_{1}, p_{2}\ldots p_{n}$ o $p', p''$ cuando sea necesario.}
+
+1. Cualquier proposición atómica por sí misma es una **oración** o una **fórmula bien formada** (*well-formed formula, wff*).
+
+2. Cualquier fórmula bien formada, precedida del símbolo de la negación $\lnot$ / $\sim$, es también una fórmula bien formada.
+
+3. Cualquier par de fórmulas bien formadas pueden combinarse en otra fórmula bien formada escribiendo entre medias alguna de las conectivas siguientes y encerrando la expresión completa entre paréntesis:
+
+    - $\land$ o $\&$ para la conjunción.
+
+    - $\lor$ para la disyunción.
+
+    - $\to$ para el condicional.
+
+    - $\leftrightarrow$ para el bicondicional.
+    
+    
+Según estas reglas, las siguientes expresiones son todas oraciones correctas: 
+
+$p$
+
+$p'$
+
+$\lnot q$
+
+$(p \land q)$ 
+
+$\lnot \lnot q$
+
+$\lnot (p \lor q) \to r$
+
+
+Por\marginnote{Ojo, a veces simplificaremos de manera informal algunas expresiones eliminando los paréntesis. P. ej.: $p \lor q$ en lugar de $(p \lor q)$ o incluso $p \lor (q \land r)$ en lugar de $(p \lor (q \land r))$.} el contrario, las siguientes expresiones no son fórmulas bien formadas: 
+
+$pq$
+
+$(p)$
+
+$\lor q$
+
+$p \land q$
+
+Los lenguajes lógicos se han diseñado para tratar de representar algunas contrucciones típicas que encontramos en las lenguas naturales. Las proposiciones atómicas de la lógica proposicional representan oraciones simples declarativas: *Juan es francés*. Sin embargo, en lógica podemos representar con la proposición atómica $p$ oraciones declarativas en lenguaje natural con cierta complejidad sintáctica como *Los malos hábitos alimenticios de Juan y el estrés en el ámbito laboral explican su delicado estado de salud durante los últimos meses*.
+
+Las conectivas tratan de representar palabras del español como la conjunción *y* ($\land$), la disyunción *o* ($\lor$) y la expresiones condicionales *si\ldots entonces* ($\to$) y *si y solo si\ldots entonces* ($\leftrightarrow$). Al contrario que los anteriores, el símbolo de negación $\lnot$ es un operador *unario* y no una conectiva *binaria*, que suele representar a la palabra *no* en ejemplos del tipo *Juan no es francés* o expresiones como *no es verdad que*.
+
+
+# Semántica
+
+La semántica de las lógica de predicados es tan sencilla como su sintaxis. Se asumen que toda proposición atómica tiene asignado un valor de verdad: verdadero (V o a veces 1) o falso (F o a veces 0).
+
+Las fórmulas bien formadas también tienen asignado un valor de verdad, que viene determinado por:
+
+1. los valores de verdad de las proposiciones que las componen, y;
+
+2. la estructura sintáctica establecida por las conectivas.
+
+Por lo tanto, el valor de verdad de la oración $(p \land q)$ vendrá determinada por los valores de verdad asignados a $p$ y $q$, y también por las propiedades de la conjunción. 
+
+A continuación vamos a repasar las tablas de verdad de cada una de las conectivas, lo que nos permitirá establecer el valor de verdad de las fórmulas teniendo en cuenta el valor de verdad de las proposiciones que las componen.
+
+## Negación
+
+La negación invierte el valor de verdad de la proposición a la que se aplica. Para cualquier fórmula $P$, si $P$ es verdadera, $\lnot P$ será falsa. Si $P$ es falsa, entonces $\lnot P$ será verdadera.
+
+ $P$     $\lnot P$
+-----   -----------
+  V          F
+  F          V
+
+## Conjución
+
+Cuando unimos coordinamos dos oraciones declarativas con la conjución *y*, el resultado que obtenemos es verdadero si ambas oraciones son verdaderas. En cualquier otro caso, el resultado es falso.
+
+ $P$     $Q$     $(P \land Q)$
+-----   -----   ---------------
+  V       V            V
+  V       F            F
+  F       V            F
+  F       F            F
+
+Hay casos en los que el uso de la conjunción *y* en las lenguas naturales no coincide con los usos que vamos a ver en lógica proposicional. P. ej., la conjunción *y* a veces implica cierto orden temporal (*Juan se levantó de la cama y se pegó una ducha*) que no se contempla aquí. En lógica proposicional, la fórmula $(p \land q)$ tiene los mismos valores de verdad que  $(q \land p)$.
+
+En las lenguas naturales, la conjunción *y* permite coordinar elementos dentro de sintagmas, sintagmas nominales, sintagmas verbales y oraciones. Ninguno de estos usos tienen correspondencia con el uso de $\land$ en lógica proposicional ya que no tenemos en cuenta la estructura interna de las oraciones. Ejemplos de oraciones como *Me gustan los tomates y los pimientos*, *Juan y María fuman mucho* y *Bajan los tipos de interés y se reactiva la economía* pueden traducirse con la proposición atómica $p$.
+
+Por último, algunos usos de las conjunciones y locuciones *pero*, *sin embargo*, *aunque*, *a pesar de que* se traducen como $\land$ en lógica proposicional: *Juan fuma pero María bebe* se puede traducir como $(p \land q)$.
+
+
+## Disyución
+
+Para que la disyución de dos proposiciones sea verdadera basta con que alguna de ellas sea verdadera.
+
+ $P$     $Q$     $(P \lor Q)$
+-----   -----   ---------------
+  V       V            V
+  V       F            V
+  F       V            V
+  F       F            F
+
+La disyunción lógica $\lor$ se corresponde en español con *o* o con la expresión *o bien\ldots o bien*. *Juan o María son sevillanos* se traduce como $(p \lor q)$ y solo es falsa cuando ni Juan ni María son sevillanos.
+
+La disyunción lógica es *inclusiva*, porque también es verdadera cuando ambas proposiciones son verdaderas. Existe una diyunción exclusiva, expresada en lenguaje natura en expresiones como *Para el postre, puedes elegir flan o fruta, pero no los dos*.
+
+
+## Condicional
+
+El condicional lógico es falso solo cuando el antecedente es verdadero y el consecuente es falso.
+
+ $P$     $Q$     $(P \to Q)$
+-----   -----   -------------
+  V       V           V
+  V       F           F
+  F       V           V
+  F       F           V
+
+La oración *Si María está en la fiesta, entonces Juan está en la fiesta tambíén* $(p \to q)$ es falsa si María está en la fiesta $(p)$ y Juan no $(\lnot q)$. Hasta aquí no hay problemas. 
+
+Las dificultades para interpretar los valores de verdad de la condicional las encontramos cuando pensamos en la oración *Si María está en la fiesta, entonces Juan está en la fiesta tambíén* $(p \to q)$ y María no está en la fiesta $(\lnot p)$. Intuitivamente, interpretamos que hay cierta conexión lógica o causal entre el antecedente y el consecuente, por lo tanto si el antecedente es falso $(\lnot p)$ es irrelevante el valor de verdad del condicional. 
+
+La explicación a los valores de verdad de los dos últimas filas de la tabla es la siguiente: \marginnote{Tercio excluso: si algo no es V, entonces será F. Y si no es F, será V. No hay más opciones.} la lógica proposicional es una lógica de dos valores: V o F. Esta definición es adecuada para el análisis en matemáticas y se mantiene, aunque ello provoque usos paradójicos cuando tratamos de formalizar lenguas naturales.
+
+
+## Bicondicional
+
+El\marginnote{En inglés, \textit{if and only if} se suele abreviar \textit{iff}.} bicondicional se suele utilizar para traducir expresiones en lenguaje natural del estilo de *si y solo si*, *es condición suficiente y necesaria*, *solo en caso de que*\ldots 
+
+El valor de verdad del bicondicional solo es verdadero cuando las dos proposiciones que conecta tienen el mismo valor de verdad.
+
+ $P$     $Q$     $(P \leftrightarrow Q)$
+-----   -----   -------------------------
+  V       V                V
+  V       F                F
+  F       V                F
+  F       F                V
+
+
+A veces resulta complicado decidir cuándo representamos una proposición con el condicional $\to$ o con el bicondicional $\leftrightarrow$. En la oración *Me iré mañana si tengo el coche arreglado*, podemos entender que tener el coche arreglado es condición necesaria para poder irme mañana (si no tengo el coche, no puedo marcharme), o podemos entender que podría marcharme aunque no tenga el coche arreglado (tengo la posibilidad de coger un tren).
+
+# Cálculo de valores de verdad de fórmulas complejas
+
+Las\marginnote{El número total de filas de cualquier tabla de verdad viene determinado por el número de proposiciones atómicas que estemos considerando: $2^n$ cuando tenemos $n$ proposiciones.} tablas de verdad proporcionan un procedimiento sistemático para calcular los valores de verdad de cualquier fórmula bien formada. De hecho, podemos construir tablas de verdad que contengan todas las posibilidades. 
+
+El orden en el que evaluamos los constituentes tiene en cuenta cómo agrupamos las fórmulas y el alcance de los paréntessis, así que es impresinsible comenzar a calcula desde dentro hacia fuera.
+
+Imaginemos que queremos calcular los valores de verdad para una fórmula bien formada como:
+
+$$
+((p \land q) \to \lnot (p \lor r))
+$$ 
+
+Procederíamos del siguiente modo:
+
+1. construímos columnas para las proposiciones atómicas $p$, $q$ y $r$. Tenemos tres proposiciones, así que nuestra tabla tendrá $2^3 = 8$ filas.
+
+2. construímos columnas para las fórmulas bien formadas más interiores: $(p \land q)$ y $(p \lor r)$.
+
+3. construímos la columna para $\lnot (p \lor r)$, invirtiendo los valores de verdad de $(p \lor r)$.
+
+4. completamos la tabla de verdad para la fórmula completa, aplicando el condiciona sobre los valores de $(p \land q)$ y de $\lnot (p \lor r)$.
+
+
+ $p$     $q$     $r$     $(p \land q)$     $(p \lor r)$     $\lnot (p \lor r)$     $(p \land q) \to \lnot (p \lor r)$
+-----   -----   -----   ---------------   --------------   --------------------   ------------------------------------ 
+  V       V       V            V                V                   F                                F
+  V       V       F            V                V                   F                                F
+  V       F       V            F                V                   F                                V
+  V       F       F            F                V                   F                                V
+  F       V       V            F                V                   F                                V
+  F       V       F            F                F                   V                                V
+  F       F       V            F                V                   F                                V
+  F       F       F            F                F                   V                                V
+  
+  
+
+# Tautologías, contriones, contingencias
+
+Podemos distinguir distintos tipos de proposiciones a partir de sus tablas de verdad. 
+
+- Decimos\marginnote{tautologías: $(p \lor \lnot p)$, $(p \to p)$, $(p \to (q \to p))$, $\lnot (p \land \lnot p)$} que una determinada proposición es una **tautología** cuando su valor de verdad, independientemente del valor de verdad de los simbolos atómicos iniciales, es siempre V. Estas proposiciones son siempre verdaderas por el valor de verdad que les otorga las conectivas.
+
+- Una\marginnote{contradiciones: $\lnot (p \lor \lnot p)$, $(p \land \lnot p)$, $\lnot ((p \lor q) \leftrightarrow (q \lor p))$} proposición es una **contradición** si su valor de verdad es siempre F. Como en el caso anterior, lo que determina el valor de verdad F en estas proposiciones son las conectivas.
+
+- Por último, cualquier proposición que pueda adoptar valores de verdad V y F se denomina **contingencia**. En este caso, el valor de la proposición sí depende de los valores iniciales de las proposiciones atómicas.
+
+Una propiedad importante de las tautologías y de las contradiciones es que si sustituimos cualquiera de sus partes por otras fórmulas bien formadas, el valor de verdad se mantiene. Si en la tautología $(p \lor \lnot p)$ sustituimos las $p$ por cualquier otra fórmula $((p \land q) \lor \lnot (p \land q))$, la proposición resultante también es una tautología. Las tautologías y las contradiciones lo son en virtud de su estructura.
+
+A menudo resulta muy útil identificar si una proposición determinada es una tautología o una contrión. Contruir tablas de verdad complejas es una tarea ardua, así que detectar tautologías es un método de rápida falsificación.
+
+
+# Reglas de lógica proposicional
+
+Cuando una proposición bicondicional es una tautología, decimos que los dos elementos constituyentes son **lógicamente equivalentes**. Las proposiciones lógicamente equivalentes son importantes para el proceso de reazonamiento porque son intercambiables sin que ello afecte al valor de verdad de la proposición. Podemos reescribir unas en forma de otras.
+
+Algunas de estas reglas ya nos suenan:\marginnote{Este listado es redundante, algunas reglas pueden derivarse de otras.}
+
+- Leyes de idempotencia: $(P \lor P) \Leftrightarrow P$, $(P \land P) \Leftrightarrow P$
+
+- Leyes asociativas: $((P \lor Q) \lor R) \Leftrightarrow P \lor (Q \lor R))$, $((P \land Q) \land R) \Leftrightarrow (P \land (Q \land R))$
+
+- Leyes conmutativas: $(P \lor Q) \Leftrightarrow (Q \lor P)$, $(P \land Q) \Leftrightarrow (Q \land P)$
+
+- Leyes distributivas: $(P \lor (Q \land R)) \Leftrightarrow (P \lor Q) \land (P \lor R))$, $(P \land (Q \lor R)) \Leftrightarrow (P \land Q) \lor (P \land R))$
+
+
+- Leyes\marginnote{$T$ representa cualquier tautología elegida arbitrariamente. $F$ se refiere a cualquier contrión arbitraria.} de identidad: $(P \lor F) \Leftrightarrow P$, $(P \lor T) \Leftrightarrow T$, $(P \land F) \Leftrightarrow F$, $(P \land T) \Leftrightarrow P$
+
+- Leyes de complemento: $(P \lor \lnot P) \Leftrightarrow T$, $\lnot \lnot P \Leftrightarrow P$, $(P \land \lnot P) \Leftrightarrow F$
+
+- Leyes de DeMorgan: $\lnot (P \lor Q) \Leftrightarrow (\lnot P \land \lnot Q)$, $\lnot (P \land Q) \Leftrightarrow (\lnot P \lor \lnot Q)$
+
+- Leyes condicionales: $(P \to Q) \Leftrightarrow (\lnot P \lor Q)$, $(P \to Q) \Leftrightarrow (\lnot Q \to \lnot P)$, $(P \to Q) \Leftrightarrow \lnot (P \land \lnot Q)$ 
+
+- Leyes bicondicionales: $(P \leftrightarrow Q) \Leftrightarrow (P \to Q) \land (Q \to P)$, $(P \leftrightarrow Q) \Leftrightarrow ((\lnot P \land \lnot Q) \lor (P \land Q)$
+
+
+## Reglas de Inferencia
+
+Hasts ahora hemos visto cómo combinar sintáticamente distintas proposiciones para formar fórmulas bien formadas, cómo calcular la semántica de las estas oraciones atendiendo a los valores de verdad de las proposiciones y de las conectivas, y cómo ciertas reglas lógicas nos permiten reescribir una proposición determinada como otra distinta que sea lógicamente equivalente. Estamos preparados para estudiar cuáles son los patrones válidos del razonamiento. 
+
+Un\marginnote{Estamos ante un argumento válido cuando, si $P_{1}, P_{2}\ldots P_{n}$ son las premisas, y $Q$ la conclusión, la proposición $(P_{1} \land P_{2} \land \ldots P_{n}) \to Q)$ es una tautología.} **argumento** está formado por un conjunto de proposiciones llamadas **premisas**, que suponemos verdaderas, y una proposicón final llamada **conclusión**, cuyo valor de verdad si deriva de la verdad de las premisa. Decimos que un argumento es **válido** si y solo si  nunca se da el caso en el que la conclusión sea falsa y las premisas sean verdaderas.
+
+1. *Si Homer tiene cerveza, entonces Homer es feliz*: $p \to q$
+2. *Homer tiene cerveza*: $p$
+3. *Homer es feliz*: $q$
+
+Este argumento es válido porque $q$ es consecuencia lógica de $((q \to q) \land p)$. $(((P \to Q) \land P ) \to Q)$ es una tautología para cualquier fórmula $P$ y $Q$.
+
+Si embargo, el argumento siguiente es inválido.
+
+1. *Si Homer tiene cerveza, entonces Homer es feliz*: $p \to q$
+2. *Homer es feliz*: $q$
+3. *Homer tiene cerveza*: $p$
+
+Si calculamos la tabla de verdad para $(((p \to q) \land q) \to p)$ comprobaremos que no es una tautología, es decir, es posible que las premisas sean verdaderas y la conclusión sea falsa.
+
+Existe varias reglas de inferencia:\marginnote{Este listado también es redundante, algunas reglas pueden derivarse de otras.}
+
+- **Modus Ponens**: $((P \to Q) \land P) \to Q)$ 
+
+    1. *Si Homer tiene cerveza, entonces Homer es feliz*: $p \to q$
+    2. *Homer tiene cerveza*: $p$
+    3. *Homer es feliz*: $q$
+
+
+- **Modus Tollens**: $((P \to Q) \land \lnot Q) \to \lnot P)$ 
+
+    1. *Si Homer tiene cerveza, entonces Homer es feliz*: $p \to q$
+    2. *Homer no es feliz*: $\lnot q$
+    3. *Homer no tiene cerveza*: $\lnot p$
+
+- **Silogismo hipotético**: $(((P \to Q) \land (Q \to R)) \to (P \to R))$ 
+
+    1. *Si el alcalde mete la mano en el presupuesto, entonces el alcalde roba al ayuntamiento*: $p \to q$
+    2. *Si el alcalde roba al ayuntamiento, entonces el alcalde te roba a ti*: $q \to r$
+    3. *Si el alcalde mete la mano en el presupuesto, entonces el alcalde te roba a ti*: $p \to r$
+    
+- **Silogismo disyuntivo**: $((P \lor Q) \land \lnot P) \to Q)$ 
+
+    1. *El alcalde es honrado, o el alcalde es corrupto*: $p \lor q$
+    2. *El alcalde no es honrrado*: $\lnot p$
+    3. *El alcalde es corrupto*: $q$
+
+- **Simplificación**: $((P \land Q) \to P)$ 
+
+    1. *Las rosas son rojas y las violetas son azules*: $p \land q$
+    2. *Las rosas son rojas*: $p$
+
+- **Conjunción**: $(P \land Q \to (P \land Q))$ 
+
+    1. *Las rosas son rojas*: $p$
+    2. *Las violetas son azules*: $q$
+    3. *Las rosas son rojas y las violetas son azules*: $p \land q$ 
+
+- **Adición**: $(P \to (P \lor Q))$ 
+
+    1. *Las rosas son rojas*: $p$
+    2. *Las rosas son rojas o el Atleti ha ganado la liga*: $p \lor q$
+
+
+[^partee]: Partee, B.; ter Meulen, A.; Wall, R. *Mathematical Methods in Linguistics* Studies in Linguistics and Philosophy. Springer. 1990. http://books.google.es/books?id=qV7TUuaYcUIC 
+
+[^krr-brachman]: Brachman, R.; Levesque, H. *Knowledge Representation and Reasoning*. Morgan Kaufmann. 2004. http://rair.cogsci.rpi.edu/pai/library/brachmanbook7-17-03.pdf
+
+[^krr-slides]: http://www.cs.toronto.edu/~hector/PublicKRSlides.pdf
+
+[^krh]: van Harmelen, Lifschitz, V. Porter, B. (Eds.) *Handbook of Knowledge Representation*. Elsevier Science. 2008. http://dai.fmph.uniba.sk/~sefranek/kri/handbook/
+
+[^wiki]: Wikipedia: Lógica Proposicional http://es.wikipedia.org/wiki/L%C3%B3gica_proposicional

@@ -1,6 +1,6 @@
 ---
 title: "Lógica Proposicional | MRC"
-author: "Víctor Peinado <v.peinado@filol.ucm.es>"
+author: "Víctor Peinado"
 date: "20-27 de noviembre de 2015"
 
 output:
@@ -62,7 +62,7 @@ $\lor q$
 
 $p \land q$
 
-Los lenguajes lógicos se han diseñado para tratar de representar algunas contrucciones típicas que encontramos en las lenguas naturales. Las proposiciones atómicas de la lógica proposicional representan oraciones simples declarativas: *Juan es francés*. Sin embargo, en lógica podemos representar con la proposición atómica $p$ oraciones declarativas en lenguaje natural con cierta complejidad sintáctica como *Los malos hábitos alimenticios de Juan y el estrés en el ámbito laboral explican su delicado estado de salud durante los últimos meses*.
+Los lenguajes lógicos se han diseñado para tratar de representar algunas construcciones típicas que encontramos en las lenguas naturales. Las proposiciones atómicas de la lógica proposicional representan oraciones simples declarativas: *Juan es francés*. Sin embargo, en lógica podemos representar con la proposición atómica $p$ oraciones declarativas en lenguaje natural con cierta complejidad sintáctica como *Los malos hábitos alimenticios de Juan y el estrés en el ámbito laboral explican su delicado estado de salud durante los últimos meses*.
 
 Las conectivas tratan de representar palabras del español como la conjunción *y* ($\land$), la disyunción *o* ($\lor$) y la expresiones condicionales *si\ldots entonces* ($\to$) y *si y solo si\ldots entonces* ($\leftrightarrow$). Al contrario que los anteriores, el símbolo de negación $\lnot$ es un operador *unario* y no una conectiva *binaria*, que suele representar a la palabra *no* en ejemplos del tipo *Juan no es francés* o expresiones como *no es verdad que*.
 
@@ -194,13 +194,13 @@ Procederíamos del siguiente modo:
   
   
 
-# Tautologías, contriones, contingencias
+# Tautologías, contradicciones, contingencias
 
 Podemos distinguir distintos tipos de proposiciones a partir de sus tablas de verdad. 
 
 - Decimos\marginnote{tautologías: $(p \lor \lnot p)$, $(p \to p)$, $(p \to (q \to p))$, $\lnot (p \land \lnot p)$} que una determinada proposición es una **tautología** cuando su valor de verdad, independientemente del valor de verdad de los simbolos atómicos iniciales, es siempre V. Estas proposiciones son siempre verdaderas por el valor de verdad que les otorga las conectivas.
 
-- Una\marginnote{contradiciones: $\lnot (p \lor \lnot p)$, $(p \land \lnot p)$, $\lnot ((p \lor q) \leftrightarrow (q \lor p))$} proposición es una **contradición** si su valor de verdad es siempre F. Como en el caso anterior, lo que determina el valor de verdad F en estas proposiciones son las conectivas.
+- Una\marginnote{contradicciones: $\lnot (p \lor \lnot p)$, $(p \land \lnot p)$, $\lnot ((p \lor q) \leftrightarrow (q \lor p))$} proposición es una **contradicción** si su valor de verdad es siempre F. Como en el caso anterior, lo que determina el valor de verdad F en estas proposiciones son las conectivas.
 
 - Por último, cualquier proposición que pueda adoptar valores de verdad V y F se denomina **contingencia**. En este caso, el valor de la proposición sí depende de los valores iniciales de las proposiciones atómicas.
 
@@ -237,7 +237,7 @@ Algunas de estas reglas ya nos suenan:\marginnote{Este listado es redundante, al
 
 ## Reglas de Inferencia
 
-Hasts ahora hemos visto cómo combinar sintáticamente distintas proposiciones para formar fórmulas bien formadas, cómo calcular la semántica de las estas oraciones atendiendo a los valores de verdad de las proposiciones y de las conectivas, y cómo ciertas reglas lógicas nos permiten reescribir una proposición determinada como otra distinta que sea lógicamente equivalente. Estamos preparados para estudiar cuáles son los patrones válidos del razonamiento. 
+Hasta ahora hemos visto cómo combinar sintáticamente distintas proposiciones para formar fórmulas bien formadas, cómo calcular la semántica de las estas oraciones atendiendo a los valores de verdad de las proposiciones y de las conectivas, y cómo ciertas reglas lógicas nos permiten reescribir una proposición determinada como otra distinta que sea lógicamente equivalente. Estamos preparados para estudiar cuáles son los patrones válidos del razonamiento. 
 
 Un\marginnote{Estamos ante un argumento válido cuando, si $P_{1}, P_{2}\ldots P_{n}$ son las premisas, y $Q$ la conclusión, la proposición $(P_{1} \land P_{2} \land \ldots P_{n}) \to Q)$ es una tautología.} **argumento** está formado por un conjunto de proposiciones llamadas **premisas**, que suponemos verdaderas, y una proposicón final llamada **conclusión**, cuyo valor de verdad si deriva de la verdad de las premisa. Decimos que un argumento es **válido** si y solo si  nunca se da el caso en el que la conclusión sea falsa y las premisas sean verdaderas.
 

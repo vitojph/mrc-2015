@@ -307,4 +307,4 @@ Existe varias reglas de inferencia:\marginnote{Este listado también es redundan
 
 [^krh]: van Harmelen, Lifschitz, V. Porter, B. (Eds.) *Handbook of Knowledge Representation*. Elsevier Science. 2008. http://dai.fmph.uniba.sk/~sefranek/kri/handbook/
 
-[^wiki]: Wikipedia: Lógica Proposicional http://es.wikipedia.org/wiki/L%C3%B3gica_proposicional
+[^wiki]: Wikipedia: Lógica Proposicional http://es.wikipedia.org/wiki/L%C3%B3gica_proposicional 

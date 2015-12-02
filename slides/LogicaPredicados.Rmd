@@ -1,0 +1,164 @@
+---
+title: "Lógica de Predicados | MRC"
+author: "Víctor Peinado"
+date: "3-4 de diciembre de 2015"
+
+output:
+  rmarkdown::tufte_handout:
+    highlight: zenburn
+---
+
+# Referencias
+
+- (Partee, *et al.*, 1990, chap. 7) [^partee]
+- Wikipedia: Lógica de Predicados [^wiki]
+
+
+La **lógica de predicados** o **lógica de primer orden** es un sistema formal diseñado para estudiar la inferencia en los lenguajes de primer orden. Estos lenguajes de primer orden son lenguajes formales que combinan el uso de cuantificadores, predicados y funciones cuyos argumentos pueden ser constantes o variables de individuo.
+
+La lógica de primer orden es más potente que la lógica proposicional y tiene capacidad expresiva suficiente para definir prácticamente todas las matemáticas.
+
+Si entendemos la lógica de predicados como un sistema lógico que permite la cuantificación de individuos, entonces su origen se remonta a la antigua Grecia y a Aristóteles. Sin embargo, es más habitual situar el origen de la lógica de primer orden tal y como la conocemos en el s. XIX y en los trabajos de Gottlob Frege, con aportaciones y demostraciones posteriores por parte de otros autores, ya en el s. XX: desde Bertrand Russel y Alfred North Witehead, hasta Kurt Gödel, Alonzo Church y Alan Turing.
+
+
+# Sintaxis
+
+En lógica de predicados, la proposición mínima está formada por un **predicado** y un número determinado de **términos**.\marginnote{Es habitual representar los predicados con letras mayúsculas y los términos con letras minúsculas. En estos ejemplos nosotros estamos representándolos con palabras completas, para que sea más sencillo de leer.}
+ 
+Veamos de manera informal cuáles son las reglas sintácticas de la lógica de predicados.  
+ 
+- La proposición $Humano(socrates)$ contiene un predicado $humano$ y un término $socrates$ y podemos interpretarla como la traducción de la oración *Sócrates es humano*. El predicado $Humano$ decimos que es unario o tiene aridad 1 porque solo tiene un término.
+
+- La proposición $Ama(juan, maria)$ está formada por el predicado $Ama$ y dos términos: $juan$ y $maria$. Trata de formalizar la oración *Juan ama a María* y, en este caso, el predicado es binario o tiene aridad 2, dado que necesita dos términos.
+
+Es importante respetar la aridad de los predicados. Cuando utilizamos un predicado con un número de argumentos incorrecto, la proposición no es válida.
+
+Por último, es importante notar que los predicados lógicos no tienen por qué representar predicados gramaticales. En la proposición $Humano(socrates)$, $Humano$ sí coincide con lo que podríamos entender como predicado de la oración *Sócrates es humano*. Pero en $Ama(juan, maria)$ estamos representando la relación que se establece entre un verbo transitivo, el sujeto y el objeto de la acción. Llevado al extremo, podríamos representar la oración *Juan ama a María* como $G(maria)$, donde $G$ sería un predicado de aridad 1 representando la expresión *Juan ama*.
+
+
+## Tipos de términos
+
+Hay dos tipos de **términos**: 
+
+- Por un lado, están las **constantes de invididuo** individuales que aparecen en los ejemplos anteriores: $socrates$, $juan$ y $maria$. En la semántica de la lógica de predicados estas constantes denotan individuos específicos que se traducen, en nuestros ejemplos en lenguaje natural, como Sócrates, Juan y María.
+
+- Por otro lado tenemos **variables de invididuo**\marginnote{Para representar variables utilizamos letras minúsculas del final del alfabeto, típicamente $v, w, x, y, z$.}. Cuando un predicado contiene una o varias variables, como en $Humano(x)$ o $Ama(x, y)$, decimos que estamos ante una **proposición abierta** o una **función proposicional**.
+
+
+## Cuantificadores
+
+Estas proposiciones abiertas pueden convertirse en proposiciones *ordinarias* cuando utilizamos cuantificadores para delimitar su alcance. Cuando una variable aparece sin cuantificar, se denomina **variable libre**. Cuando aparece cuantificada, decimos que esa variable está **ligada**.
+
+Tenemos dos tipos de cuantificadores:
+
+- el **cuantificador universal** se denota como $\forall$ y se traduce en lenguaje natural como *para todo*, *todos*, *cada uno*
+
+- el **cuantificador existencial** se denota como $\exists$ y se traduce en lenguaje natural como *existe algún*, *alguno*, *hay al menos uno, posiblemente otros*.
+
+Escribimos estos cuantificadores junto a una o varias variables y antes de un predicado concreto para indicar a qué variables y expresiones se aplican:
+
+- una\marginnote{En estos ejemplos, la variable $x$ está cuantificada y se denomina variable ligada.} expresión como $(\forall x) Humano(x)$ se traduce como *Todo individuo es humano*, *para todo x, x es humano*.
+
+- $(\exists x) Ama(juan, x)$ se traduce como *Juan ama a alguien*, *existe un x tal que Juan ama a x*. 
+
+Es\marginnote{En este ejemplo, ambas variables son ligadas.} perfectamente posible encontrar expresiones con varios cuantificadores donde cada uno se aplica a una variable diferente. La expresión $(\forall x) (\exists y) Ama(x, y)$ puede traducirse como *Todo el mundo ama a alguien*.
+
+
+
+
+## Conectivas
+
+Tanto las proposiciones ordinarias como las abiertas pueden contener las mismas conectivas que vimos en lógica proposicional:
+
+- $\lnot Humano(socrates)$ se traduce como *No es verdad que Sócrates es humano* o, informalmente, *Sócrates no es humano*.
+
+- $\lnot Humano(x)$ es una proposición abierta, porque la variable $x$ no está cuantificada.
+
+- $((\forall x) Humano(x) \land Ama(juan, maria))$ se traduce como *Todo el mundo es humano y Juan ama a María*.
+
+- $(\lnot Humano(socrates) \to \lnot (\forall x) Humano(x))$ se traduce como *Si Sócrates no es humano, entonces no es verdad que todo el mundo es humano*.
+
+
+## Vocabulario y reglas sintácticas
+
+De los ejemplos anteriores podemos deducir las reglas sintácticas de la lógica de predicados.
+
+El **vocabulario** está formado por:
+
+- términos, que pueden ser de dos tipos:
+
+    - constantes, representadas como $socrates$, $juan$, $maria$ y, en general, cualquier letra minúscula $j, k, l, m\ldots$
+    - variables, representadas como cualquier letra minúscula del final del alfabeto $v, w, x, y, z$
+
+- predicados, cada uno con una aridad determinada (número de argumentos que acepta) y representados como $Humano$, $Ama$ y, en general, cualquier letra mayúscula.
+
+- las cinco conectivas que ya conocemos: negación $\lnot$, conjunción $\land$, disyunción $\lor$, condicional $\to$ y bicondicional $\leftrightarrow$.
+
+- dos cuantificadores: el universal $\forall$ y el existencial $\exists$
+
+- otros símbolos auxiliares como los paréntesis $()$ y corchetes $[]$, que se utilizan para agrupar fórmulas.
+
+
+Las **reglas sintácticas** son las siguientes:
+
+- Si $P$ es un predicado con aridad $n$, entonces $P(t_{1}, t_{2}\ldots t_{n})$ es una oración o fórmula bien formada.\marginnote{Este tipo de fórmulas, que no contienen conectivas ni cuantificadores se denominan \textit{fórmula atómica}.}
+
+- Si $\varphi$ y $\psi$ son dos fórmulas, entonces $\lnot \varphi$, $(\varphi \land \psi)$, $(\varphi \lor \psi)$, $(\varphi \to \psi)$ y , $(\varphi \leftrightarrow \psi)$ son también fórmulas.
+
+- Si $\varphi$ es una fórmula y $x$ es una variable, entonces Si $(\forall x) \varphi$ y $(\exists x) \varphi$ son también fórmulas. En este caso, llamamo a $\varphi$ el alcance de la variable $x$.\marginnote{Es posible encontrar fórmulas con cuantificadores que se aplican sobre variables que no aparecen en el predicado: $(\forall x P(y))$ es una fórmula bien formada.}
+
+Para que una fórmula de lógica de predicados sea considerada una proposición es imprescindible que no contenga variables libres, es decir: que tenga todas sus variables cuantificadas.  
+
+
+# Semántica
+
+Al igual que ocurre en la lógica proposicional, a una proposición de lógica de predicados podemos asignarle uno de los dos posibles valores de verdad: verdadero ($V$) o falso ($F$).
+
+Si una proposición contiene predicados y términos, e incluso cuantificadores, entonces el valor de verdad vendrá determinado por los *valores semánticos* (no necesariamente, valores de verdad) de sus componentes.
+
+Por ejemplo, la proposición $Humano(socrates)$ está compuesta por un predicado con aridad 1 $Humano$ y un término: la constante $socrates$. Esta constante $socrates$ tiene como valor semántico el de algún individuo elegido a partir de un conjunto $D$ predefinido con anterioridad, que contiene el dominio. Supongamos que $D$ es el conjunto formado por todos los seres humanos, vivos o muertos, y que el individuo asignado a la constante $socrates$ es el filósofo Sócrates. 
+
+El predicado $Humano$ recibe su valor semántico de un conjunto de individuos contenidos en $D$, por ejemplo, $\{$Sócrates, Aristóteles, Platón, Mozart, Beethoven$\}$. La proposición $Humano(socrates)$ tiene un valor de verdad $V$ en virtud de que el individuo al que se refiere $socrates$ es miembro del conjunto al que se corresponde el predicado $Humano$. Si $Humano$ se correspondiera con otro conjunto diferente, por ejemplo $\{$Pelé, Maradona, Di Stefano, Messi$\}$, el valor de verdad de la proposición $Humano(socrates)$ sería $F$.
+
+Utilizamos los dobles corchetes en $[[\alpha]]$ para denotar el valor semántico de la expresión $\alpha$. De manera que $[[socrates]] =$ Sócrates, $[[Humano]] = \{$Sócrates, Aristótles, Platón, Mozart, Beethoven$\}$ y $[[Humano(socrates)]] = V$
+
+Un predicado como $Ama$ que tenga aridad 2 tiene como valor semántico un conjunto de pares ordenados de individuos que sean elementos de $D$, o dicho de otro modo, un subconjunto de $D \times D$. Una proposición como $Ama(juan, maria)$ es verdadera en caso de que exista un par $(x, y)$ donde $X$ es el valor semántico de $juan$ y $y$ es el valor semántico de $maria$. En general, para todo predicado $P$ que tenga aridad 2 y todo par de términos $a, b$, decimos que $[[P(a, b)]] = V$ si y solo si $([[a]], [[b]]) \in [[P]]$
+
+El valor de verdad de cualquier proposición de lógica de predicados dependerá del dominio del discurso y de la elección de los valores semánticos de las constantes y los predicados. Cuando todos estos elementos están especificados, decimos que tenemos definido un *modelo* de lógica de predicados. 
+
+Un modelo consiste en un conjunto $D$ y una función $F$ que asigna:
+
+1. a cada constante de individuo, un elemento de $D$.
+2. a cada predicado de aridad $1$, un subconjunto de $D$.
+3. a cada predicado de aridad $2$, un subconjunto de $D \times D$; y, en general,
+4. a cada predicado de aridad $n$, un subconjunto de $D \times D \times D\ldots$ (un subconjunto de n-tuplas de elementos de $D$).
+
+Una proposición de lógica de predicados como $Humano(socrates)$ o $Ama(juan, maria)$ no es simplemente verdadera o falsa, sino que será verdadera o falsa teniendo en cuenta determinado modelo $M$.
+
+# Deducción natural
+
+La lógica de predicados tiene dos reglas de inferencia fundamentales:
+
+1. ***Modus ponens***, heredada de la lógica proposicional.
+
+$(((\forall x) Humano(x) \to Mortal(x)) \land Humano(socrates)) \to Mortal(socrates)$. 
+
+A partir de la oración cuantificada universalmente *Todos los seres humano son mortales* podemos inferir *Si Sócrates es un ser humano, entonces Sócrates es mortal*.
+
+2. **Generalización universal**
+
+A partir de la fórmula $Mortal(socrates)$ podemos generalizar $(\forall x) Mortal(x)$. O dicho de otro modo, a partir de la oración *Sócrates es mortal* podemos generalizar *Todos los seres humanos son mortales*.
+
+
+
+
+
+[^partee]: Partee, B.; ter Meulen, A.; Wall, R. *Mathematical Methods in Linguistics* Studies in Linguistics and Philosophy. Springer. 1990. http://books.google.es/books?id=qV7TUuaYcUIC 
+
+[^krr-brachman]: Brachman, R.; Levesque, H. *Knowledge Representation and Reasoning*. Morgan Kaufmann. 2004. http://rair.cogsci.rpi.edu/pai/library/brachmanbook7-17-03.pdf
+
+[^krr-slides]: http://www.cs.toronto.edu/~hector/PublicKRSlides.pdf
+
+[^krh]: van Harmelen, Lifschitz, V. Porter, B. (Eds.) *Handbook of Knowledge Representation*. Elsevier Science. 2008. http://dai.fmph.uniba.sk/~sefranek/kri/handbook/
+
+[^wiki]: Wikipedia: Lógica de Predicados http://es.wikipedia.org/wiki/L%C3%B3gica_de_primer_orden

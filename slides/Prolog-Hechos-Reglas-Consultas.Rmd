@@ -5,7 +5,7 @@ date: "10-11 de diciembre de 2015"
 
 output:
   rmarkdown::tufte_handout:
-    highlight: zenburn
+    highlight: tango
 ---
 
 # Referencias
@@ -38,7 +38,7 @@ La siguiente base de conocimiento contiene tres hechos distintos que representan
 ```prolog
 /* kb1: ejemplo */
 es_hombre(socrates).
-jefe_de_gobierno(españa, rajoy).
+jefe_de_gobierno(espana, rajoy).
 suma(2, 3, 5).
 ```
 
@@ -63,7 +63,7 @@ mujer(sarah).
 mujer(milcah).
 mujer(yiscah).
 
-/* los padres*/
+/* los padres */
 padre(terach, abraham).
 padre(terach, nachor).
 padre(terach, haran).
